@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bradley Parker — Projects &amp; SAR Technology</title>
-  <meta name="description" content="Projects, open-source software, and Search &amp; Rescue (SAR) technology tools built by Bradley Parker." />
-  
+  <meta name="description"
+    content="Projects, open-source software, and Search &amp; Rescue (SAR) technology tools built by Bradley Parker." />
+
   <meta property="og:title" content="Bradley Parker — Projects &amp; SAR Technology" />
-  <meta property="og:description" content="Open-source tools for Search &amp; Rescue workflows, mapping bridges, and operational automation." />
+  <meta property="og:description"
+    content="Open-source tools for Search &amp; Rescue workflows, mapping bridges, and operational automation." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bradley-parker.github.io/" />
 
   <!-- Google Fonts: Josefin Sans (Art Deco geometric), Marcellus, & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Plus+Jakarta+Sans:wght@400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Plus+Jakarta+Sans:wght@400;500;600&family=Marcellus&display=swap"
+    rel="stylesheet">
 
   <style>
     :root {
@@ -32,7 +37,7 @@
       --text-main: #f5f5f3;
       --text-soft: #c8ced6;
       --text-muted: #858f9d;
-      
+
       --gold: #c5a059;
       --gold-light: #e5c788;
       --gold-dim: rgba(197, 160, 89, 0.12);
@@ -54,26 +59,22 @@
       --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 
       /* Chamfer clip-path for cards and buttons */
-      --chamfer-corner: polygon(
-        0 8px,
-        8px 0,
-        calc(100% - 8px) 0,
-        100% 8px,
-        100% calc(100% - 8px),
-        calc(100% - 8px) 100%,
-        8px 100%,
-        0 calc(100% - 8px)
-      );
-      --chamfer-btn: polygon(
-        0 6px,
-        6px 0,
-        calc(100% - 6px) 0,
-        100% 6px,
-        100% calc(100% - 6px),
-        calc(100% - 6px) 100%,
-        6px 100%,
-        0 calc(100% - 6px)
-      );
+      --chamfer-corner: polygon(0 8px,
+          8px 0,
+          calc(100% - 8px) 0,
+          100% 8px,
+          100% calc(100% - 8px),
+          calc(100% - 8px) 100%,
+          8px 100%,
+          0 calc(100% - 8px));
+      --chamfer-btn: polygon(0 6px,
+          6px 0,
+          calc(100% - 6px) 0,
+          100% 6px,
+          100% calc(100% - 6px),
+          calc(100% - 6px) 100%,
+          6px 100%,
+          0 calc(100% - 6px));
     }
 
     [data-theme="light"] {
@@ -87,7 +88,7 @@
       --text-main: #1c1e21;
       --text-soft: #3f444c;
       --text-muted: #6b7380;
-      
+
       --gold: #9d7732;
       --gold-light: #7c5c21;
       --gold-dim: rgba(157, 119, 50, 0.1);
@@ -124,7 +125,7 @@
       flex-direction: column;
       transition: background-color 0.3s ease, color 0.3s ease;
       -webkit-font-smoothing: antialiased;
-      background-image: 
+      background-image:
         radial-gradient(circle at 50% 0%, var(--gold-dim) 0%, transparent 55%),
         linear-gradient(to right, rgba(197, 160, 89, 0.02) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(197, 160, 89, 0.02) 1px, transparent 1px);
@@ -709,6 +710,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Header -->
@@ -720,30 +722,33 @@
             <h1>Bradley Parker</h1>
             <span class="deco-pill">
               <span>&#9670;</span>
-              SAR Tech &amp; Software
+              SAR Technology
               <span>&#9670;</span>
             </span>
           </div>
 
           <p class="bio">
-            Crafting specialized open-source software, GIS bridges, and operational data pipelines for Ground Search &amp; Rescue (GSAR) teams, spatial workflows, and community technology.
+            Human designed tools to make the lives of Ground Search and Rescue volunteers easier.
           </p>
 
           <div class="social-links">
             <a class="btn-link" href="https://github.com/Bradley-Parker" target="_blank" rel="noopener noreferrer">
               <svg class="icon" viewBox="0 0 16 16" width="15" height="15">
-                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                <path fill-rule="evenodd"
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
               </svg>
               GitHub / Bradley-Parker
             </a>
-            <a class="btn-link" href="https://bradley-parker.github.io/Canadian-SAR-Technology-Hub/" target="_blank" rel="noopener noreferrer">
+            <a class="btn-link" href="https://bradley-parker.github.io/Canadian-SAR-Technology-Hub/" target="_blank"
+              rel="noopener noreferrer">
               <span>&#9670;</span>
-              Canadian SAR Tech Hub
+              Canadian SAR Technology Hub
             </a>
           </div>
         </div>
 
-        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Color Theme" title="Toggle Light/Dark Theme">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Color Theme"
+          title="Toggle Light/Dark Theme">
           <svg id="moon-icon" viewBox="0 0 24 24" style="display: none;">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
@@ -774,11 +779,12 @@
             <span class="section-deco-icon">&#9670;</span>
             <h2 class="section-title">Featured Projects &amp; Web Tools</h2>
           </div>
-          <p class="section-desc">Client-side applications and collaborative resources engineered for immediate operational deployment.</p>
+          <p class="section-desc">Client-side applications and collaborative resources engineered for immediate
+            operational deployment.</p>
         </div>
 
         <div class="grid-main">
-          
+
           <!-- Card 1: SAR-Evac-Tools -->
           <article class="main-card">
             <div class="card-top">
@@ -786,10 +792,13 @@
               <span class="card-symbol" title="CalTopo Bridge">&#9670; &#9671;</span>
             </div>
             <h3>
-              <a href="https://github.com/Bradley-Parker/SAR-Evac-Tools" target="_blank" rel="noopener noreferrer">SAR-Evac-Tools</a>
+              <a href="https://github.com/Bradley-Parker/SAR-Evac-Tools" target="_blank"
+                rel="noopener noreferrer">SAR-Evac-Tools</a>
             </h3>
             <p class="card-desc">
-              Browser-based tools for Search &amp; Rescue evacuation workflows with CalTopo. Converts structure and residence CSVs into GPX waypoints, and parses CalTopo GeoJSON markers back into spreadsheet status reports. 100% client-side privacy with zero backend upload required.
+              Browser-based tools for Search &amp; Rescue evacuation workflows with CalTopo. Converts structure and
+              residence CSVs into GPX waypoints, and parses CalTopo GeoJSON markers back into spreadsheet status
+              reports. 100% client-side privacy with zero backend upload required.
             </p>
             <div class="tag-list">
               <span class="tag">CalTopo Bridge</span>
@@ -798,14 +807,16 @@
               <span class="tag">Client-Side</span>
             </div>
             <div class="card-actions">
-              <a class="btn-deco-primary" href="https://bradley-parker.github.io/SAR-Evac-Tools/" target="_blank" rel="noopener noreferrer">
+              <a class="btn-deco-primary" href="https://bradley-parker.github.io/SAR-Evac-Tools/" target="_blank"
+                rel="noopener noreferrer">
                 Launch Tool
                 <svg class="icon-stroke" viewBox="0 0 24 24" style="width: 13px; height: 13px;">
                   <line x1="7" y1="17" x2="17" y2="7"></line>
                   <polyline points="7 7 17 7 17 17"></polyline>
                 </svg>
               </a>
-              <a class="btn-deco-secondary" href="https://github.com/Bradley-Parker/SAR-Evac-Tools" target="_blank" rel="noopener noreferrer">
+              <a class="btn-deco-secondary" href="https://github.com/Bradley-Parker/SAR-Evac-Tools" target="_blank"
+                rel="noopener noreferrer">
                 Source Code
               </a>
             </div>
@@ -818,10 +829,13 @@
               <span class="card-symbol" title="Computer Vision">&#9670; &#9671;</span>
             </div>
             <h3>
-              <a href="https://github.com/Bradley-Parker/web-id-flow" target="_blank" rel="noopener noreferrer">web-id-flow</a>
+              <a href="https://github.com/Bradley-Parker/web-id-flow" target="_blank"
+                rel="noopener noreferrer">web-id-flow</a>
             </h3>
             <p class="card-desc">
-              Privacy-first credential photo maker operating entirely in the browser. Features guided webcam alignment overlays, local AI background removal, and automatic 4:5 aspect ratio cropping—ready for badge printing without storing personal images on remote servers.
+              Privacy-first credential photo maker operating entirely in the browser. Features guided webcam alignment
+              overlays, local AI background removal, and automatic 4:5 aspect ratio cropping—ready for badge printing
+              without storing personal images on remote servers.
             </p>
             <div class="tag-list">
               <span class="tag">On-Device AI</span>
@@ -830,14 +844,16 @@
               <span class="tag">Zero-Server</span>
             </div>
             <div class="card-actions">
-              <a class="btn-deco-primary" href="https://bradley-parker.github.io/web-id-flow/" target="_blank" rel="noopener noreferrer">
+              <a class="btn-deco-primary" href="https://bradley-parker.github.io/web-id-flow/" target="_blank"
+                rel="noopener noreferrer">
                 Launch App
                 <svg class="icon-stroke" viewBox="0 0 24 24" style="width: 13px; height: 13px;">
                   <line x1="7" y1="17" x2="17" y2="7"></line>
                   <polyline points="7 7 17 7 17 17"></polyline>
                 </svg>
               </a>
-              <a class="btn-deco-secondary" href="https://github.com/Bradley-Parker/web-id-flow" target="_blank" rel="noopener noreferrer">
+              <a class="btn-deco-secondary" href="https://github.com/Bradley-Parker/web-id-flow" target="_blank"
+                rel="noopener noreferrer">
                 Source Code
               </a>
             </div>
@@ -850,10 +866,13 @@
               <span class="card-symbol" title="Community Hub">&#9670; &#9671;</span>
             </div>
             <h3>
-              <a href="https://github.com/Bradley-Parker/Canadian-SAR-Technology-Hub" target="_blank" rel="noopener noreferrer">Canadian-SAR-Technology-Hub</a>
+              <a href="https://github.com/Bradley-Parker/Canadian-SAR-Technology-Hub" target="_blank"
+                rel="noopener noreferrer">Canadian-SAR-Technology-Hub</a>
             </h3>
             <p class="card-desc">
-              A community-maintained, open-source repository of Ground Search and Rescue (GSAR) technology, operational templates, procedures, and software recommendations. Designed to share proven, budget-conscious solutions among volunteer SAR units across Canada.
+              A community-maintained, open-source repository of Ground Search and Rescue (GSAR) technology, operational
+              templates, procedures, and software recommendations. Designed to share proven, budget-conscious solutions
+              among volunteer SAR units across Canada.
             </p>
             <div class="tag-list">
               <span class="tag">GSAR Standards</span>
@@ -862,14 +881,16 @@
               <span class="tag">Open Knowledge</span>
             </div>
             <div class="card-actions">
-              <a class="btn-deco-primary" href="https://bradley-parker.github.io/Canadian-SAR-Technology-Hub/" target="_blank" rel="noopener noreferrer">
+              <a class="btn-deco-primary" href="https://bradley-parker.github.io/Canadian-SAR-Technology-Hub/"
+                target="_blank" rel="noopener noreferrer">
                 Visit Hub
                 <svg class="icon-stroke" viewBox="0 0 24 24" style="width: 13px; height: 13px;">
                   <line x1="7" y1="17" x2="17" y2="7"></line>
                   <polyline points="7 7 17 7 17 17"></polyline>
                 </svg>
               </a>
-              <a class="btn-deco-secondary" href="https://github.com/Bradley-Parker/Canadian-SAR-Technology-Hub" target="_blank" rel="noopener noreferrer">
+              <a class="btn-deco-secondary" href="https://github.com/Bradley-Parker/Canadian-SAR-Technology-Hub"
+                target="_blank" rel="noopener noreferrer">
                 Source Code
               </a>
             </div>
@@ -896,13 +917,15 @@
             <span class="section-deco-icon">&#9670;</span>
             <h2 class="section-title">Developer Libraries &amp; Operational Integrations</h2>
           </div>
-          <p class="section-desc">Specialized API clients, roster synchronization utilities, and real-time operational bridges.</p>
+          <p class="section-desc">Specialized API clients, roster synchronization utilities, and real-time operational
+            bridges.</p>
         </div>
 
         <div class="grid-minor">
 
           <!-- Minor 1: sar_d4h_client -->
-          <a class="minor-card" href="https://github.com/Bradley-Parker/sar_d4h_client" target="_blank" rel="noopener noreferrer">
+          <a class="minor-card" href="https://github.com/Bradley-Parker/sar_d4h_client" target="_blank"
+            rel="noopener noreferrer">
             <div class="minor-header">
               <div class="minor-title-wrap">
                 <span class="minor-deco-bullet">&#9670;</span>
@@ -910,7 +933,8 @@
               </div>
             </div>
             <p class="minor-desc">
-              Modular Python 3 client for the D4H Team Manager API (v3). Abstracts authentication context, roster management, attendance endpoints, and team queries for internal SAR automation.
+              Modular Python 3 client for the D4H Team Manager API (v3). Abstracts authentication context, roster
+              management, attendance endpoints, and team queries for internal SAR automation.
             </p>
             <div class="minor-meta">
               <span class="minor-tag">Python &bull; API Client</span>
@@ -921,7 +945,8 @@
           </a>
 
           <!-- Minor 2: d4h-costing-gen -->
-          <a class="minor-card" href="https://github.com/Bradley-Parker/d4h-costing-gen" target="_blank" rel="noopener noreferrer">
+          <a class="minor-card" href="https://github.com/Bradley-Parker/d4h-costing-gen" target="_blank"
+            rel="noopener noreferrer">
             <div class="minor-header">
               <div class="minor-title-wrap">
                 <span class="minor-deco-bullet">&#9670;</span>
@@ -929,7 +954,8 @@
               </div>
             </div>
             <p class="minor-desc">
-              Operational claim and expense generator for volunteer SAR teams. Ingests D4H incident attendance, computes driving distances via Mapbox Directions API, and compiles reimbursement claim sheets.
+              Operational claim and expense generator for volunteer SAR teams. Ingests D4H incident attendance, computes
+              driving distances via Mapbox Directions API, and compiles reimbursement claim sheets.
             </p>
             <div class="minor-meta">
               <span class="minor-tag">Python &bull; Costing &amp; Claims</span>
@@ -940,7 +966,8 @@
           </a>
 
           <!-- Minor 3: caltopo-d4h-role-sync -->
-          <a class="minor-card" href="https://github.com/Bradley-Parker/caltopo-d4h-role-sync" target="_blank" rel="noopener noreferrer">
+          <a class="minor-card" href="https://github.com/Bradley-Parker/caltopo-d4h-role-sync" target="_blank"
+            rel="noopener noreferrer">
             <div class="minor-header">
               <div class="minor-title-wrap">
                 <span class="minor-deco-bullet">&#9670;</span>
@@ -948,7 +975,8 @@
               </div>
             </div>
             <p class="minor-desc">
-              Audit utility reconciling CalTopo team member accounts against official D4H operational rosters, flagging unverified accounts or credential status discrepancies for team leadership.
+              Audit utility reconciling CalTopo team member accounts against official D4H operational rosters, flagging
+              unverified accounts or credential status discrepancies for team leadership.
             </p>
             <div class="minor-meta">
               <span class="minor-tag">Python &bull; Security &amp; Audit</span>
@@ -959,7 +987,8 @@
           </a>
 
           <!-- Minor 4: caltopo_client -->
-          <a class="minor-card" href="https://github.com/Bradley-Parker/caltopo_client" target="_blank" rel="noopener noreferrer">
+          <a class="minor-card" href="https://github.com/Bradley-Parker/caltopo_client" target="_blank"
+            rel="noopener noreferrer">
             <div class="minor-header">
               <div class="minor-title-wrap">
                 <span class="minor-deco-bullet">&#9670;</span>
@@ -967,7 +996,8 @@
               </div>
             </div>
             <p class="minor-desc">
-              Python API client library for programmatic interaction with CalTopo / SARTopo maps, enabling script-driven layer manipulation, marker updates, and state syncing.
+              Python API client library for programmatic interaction with CalTopo / SARTopo maps, enabling script-driven
+              layer manipulation, marker updates, and state syncing.
             </p>
             <div class="minor-meta">
               <span class="minor-tag">Python &bull; GIS Client</span>
@@ -978,7 +1008,8 @@
           </a>
 
           <!-- Minor 5: zello-to-caltopo-rtt -->
-          <a class="minor-card" href="https://github.com/Bradley-Parker/zello-to-caltopo-rtt" target="_blank" rel="noopener noreferrer">
+          <a class="minor-card" href="https://github.com/Bradley-Parker/zello-to-caltopo-rtt" target="_blank"
+            rel="noopener noreferrer">
             <div class="minor-header">
               <div class="minor-title-wrap">
                 <span class="minor-deco-bullet">&#9670;</span>
@@ -986,7 +1017,8 @@
               </div>
             </div>
             <p class="minor-desc">
-              Real-time telemetry bridge parsing live GPS tracking feeds from Zello push-to-talk channels and publishing dynamic trackable objects onto CalTopo tactical maps during field operations.
+              Real-time telemetry bridge parsing live GPS tracking feeds from Zello push-to-talk channels and publishing
+              dynamic trackable objects onto CalTopo tactical maps during field operations.
             </p>
             <div class="minor-meta">
               <span class="minor-tag">Python &bull; Telemetry / RTT</span>
@@ -1060,4 +1092,5 @@
     });
   </script>
 </body>
+
 </html>
