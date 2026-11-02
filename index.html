@@ -1,1 +1,1063 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bradley Parker — Projects &amp; SAR Technology</title>
+  <meta name="description" content="Projects, open-source software, and Search &amp; Rescue (SAR) technology tools built by Bradley Parker." />
+  
+  <meta property="og:title" content="Bradley Parker — Projects &amp; SAR Technology" />
+  <meta property="og:description" content="Open-source tools for Search &amp; Rescue workflows, mapping bridges, and operational automation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bradley-parker.github.io/" />
+
+  <!-- Google Fonts: Josefin Sans (Art Deco geometric), Marcellus, & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Plus+Jakarta+Sans:wght@400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-deco: "Josefin Sans", "Marcellus", Georgia, sans-serif;
+      --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+      /* Art Deco Palette - Dark (Midnight Obsidian & Champagne Gold) */
+      --bg: #0b0e14;
+      --bg-alt: #10141d;
+      --card-bg: #141923;
+      --card-bg-hover: #18202d;
+      --card-border: #252e3d;
+      --card-border-gold: #c5a059;
+      --text-main: #f5f5f3;
+      --text-soft: #c8ced6;
+      --text-muted: #858f9d;
+      
+      --gold: #c5a059;
+      --gold-light: #e5c788;
+      --gold-dim: rgba(197, 160, 89, 0.12);
+      --gold-glow: rgba(197, 160, 89, 0.28);
+      --gold-border: rgba(197, 160, 89, 0.35);
+
+      --sar-copper: #d97736;
+      --sar-copper-dim: rgba(217, 119, 54, 0.14);
+
+      --badge-bg: rgba(197, 160, 89, 0.08);
+      --badge-text: #e5c788;
+      --badge-border: rgba(197, 160, 89, 0.3);
+
+      --tag-bg: #1a222e;
+      --tag-text: #9aa5b5;
+
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
+      --shadow-gold: 0 0 15px rgba(197, 160, 89, 0.2);
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+      /* Chamfer clip-path for cards and buttons */
+      --chamfer-corner: polygon(
+        0 8px,
+        8px 0,
+        calc(100% - 8px) 0,
+        100% 8px,
+        100% calc(100% - 8px),
+        calc(100% - 8px) 100%,
+        8px 100%,
+        0 calc(100% - 8px)
+      );
+      --chamfer-btn: polygon(
+        0 6px,
+        6px 0,
+        calc(100% - 6px) 0,
+        100% 6px,
+        100% calc(100% - 6px),
+        calc(100% - 6px) 100%,
+        6px 100%,
+        0 calc(100% - 6px)
+      );
+    }
+
+    [data-theme="light"] {
+      /* Art Deco Palette - Light (Warm Ivory Parchment & Burnished Brass) */
+      --bg: #f9f7f2;
+      --bg-alt: #ffffff;
+      --card-bg: #ffffff;
+      --card-bg-hover: #faf8f4;
+      --card-border: #e2ddd3;
+      --card-border-gold: #9d7732;
+      --text-main: #1c1e21;
+      --text-soft: #3f444c;
+      --text-muted: #6b7380;
+      
+      --gold: #9d7732;
+      --gold-light: #7c5c21;
+      --gold-dim: rgba(157, 119, 50, 0.1);
+      --gold-glow: rgba(157, 119, 50, 0.15);
+      --gold-border: rgba(157, 119, 50, 0.3);
+
+      --sar-copper: #b85718;
+      --sar-copper-dim: rgba(184, 87, 24, 0.1);
+
+      --badge-bg: rgba(157, 119, 50, 0.08);
+      --badge-text: #7c5c21;
+      --badge-border: rgba(157, 119, 50, 0.28);
+
+      --tag-bg: #f0ebe1;
+      --tag-text: #59616d;
+
+      --shadow-card: 0 4px 16px rgba(30, 25, 15, 0.06);
+      --shadow-gold: 0 0 12px rgba(157, 119, 50, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+      background-image: 
+        radial-gradient(circle at 50% 0%, var(--gold-dim) 0%, transparent 55%),
+        linear-gradient(to right, rgba(197, 160, 89, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(197, 160, 89, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Art Deco Geometric Divider */
+    .deco-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      opacity: 0.85;
+    }
+
+    .deco-line {
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, var(--gold-border), var(--gold-border), transparent);
+    }
+
+    .deco-motif {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--gold);
+      font-size: 0.65rem;
+    }
+
+    /* Header */
+    header {
+      padding: 4rem 0 2.5rem;
+      position: relative;
+      border-bottom: 1px solid var(--card-border);
+      background: linear-gradient(180deg, var(--gold-dim) 0%, transparent 100%);
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .brand-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      font-family: var(--font-deco);
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .deco-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-deco);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.3rem 0.85rem;
+      border-radius: 2px;
+      background: var(--sar-copper-dim);
+      color: var(--sar-copper);
+      border: 1px solid var(--sar-copper);
+      box-shadow: 0 0 10px var(--sar-copper-dim);
+    }
+
+    .bio {
+      font-size: 1.05rem;
+      color: var(--text-soft);
+      max-width: 720px;
+      line-height: 1.6;
+    }
+
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-deco);
+      font-size: 0.825rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+      text-decoration: none;
+      color: var(--text-soft);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      clip-path: var(--chamfer-btn);
+      transition: var(--transition);
+    }
+
+    .btn-link:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: var(--card-bg-hover);
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-1px);
+    }
+
+    /* Theme Toggle */
+    .theme-toggle-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--gold);
+      padding: 0.55rem;
+      clip-path: var(--chamfer-btn);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .theme-toggle-btn:hover {
+      border-color: var(--gold);
+      background: var(--card-bg-hover);
+      box-shadow: var(--shadow-gold);
+      transform: rotate(15deg);
+    }
+
+    .theme-toggle-btn svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    /* Main Sections */
+    main {
+      flex: 1;
+      padding: 3.5rem 0;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-deco-icon {
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+
+    .section-title {
+      font-family: var(--font-deco);
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Tier 1: Main Cards */
+    .grid-main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .main-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0;
+      clip-path: var(--chamfer-corner);
+      padding: 2rem 1.75rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: var(--transition);
+      box-shadow: var(--shadow-card);
+    }
+
+    /* Architectural Art Deco corner accents on card */
+    .main-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-border), var(--gold-light), var(--gold-border), transparent);
+      opacity: 0.7;
+      transition: var(--transition);
+    }
+
+    .main-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--card-border-gold);
+      box-shadow: var(--shadow-card), var(--shadow-gold);
+    }
+
+    .main-card:hover::before {
+      opacity: 1;
+      height: 3px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.15rem;
+    }
+
+    .card-badge {
+      font-family: var(--font-deco);
+      font-size: 0.725rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border: 1px solid var(--badge-border);
+      clip-path: var(--chamfer-btn);
+    }
+
+    .card-symbol {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+    }
+
+    .main-card h3 {
+      font-family: var(--font-deco);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text-main);
+      margin-bottom: 0.85rem;
+      line-height: 1.25;
+    }
+
+    .main-card h3 a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .main-card h3 a:hover {
+      color: var(--gold);
+    }
+
+    .card-desc {
+      color: var(--text-soft);
+      font-size: 0.925rem;
+      line-height: 1.6;
+      flex-grow: 1;
+      margin-bottom: 1.35rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      font-size: 0.725rem;
+      font-family: var(--font-mono);
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 0.2rem 0.55rem;
+      border: 1px solid rgba(197, 160, 89, 0.12);
+      border-radius: 2px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: auto;
+      flex-wrap: wrap;
+    }
+
+    .btn-deco-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-deco);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.1rem;
+      background: linear-gradient(135deg, var(--gold) 0%, #a88339 100%);
+      color: #0b0e14;
+      text-decoration: none;
+      clip-path: var(--chamfer-btn);
+      transition: var(--transition);
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-deco-primary:hover {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-1px);
+    }
+
+    [data-theme="light"] .btn-deco-primary {
+      color: #ffffff;
+    }
+
+    .btn-deco-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-deco);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.95rem;
+      background: transparent;
+      color: var(--text-soft);
+      text-decoration: none;
+      border: 1px solid var(--card-border);
+      clip-path: var(--chamfer-btn);
+      transition: var(--transition);
+    }
+
+    .btn-deco-secondary:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: var(--card-bg-hover);
+    }
+
+    /* Tier 2: Minor Cards */
+    .grid-minor {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.35rem;
+    }
+
+    .minor-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      clip-path: var(--chamfer-corner);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: var(--transition);
+      box-shadow: var(--shadow-card);
+    }
+
+    .minor-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--card-border-gold);
+      box-shadow: var(--shadow-card), var(--shadow-gold);
+    }
+
+    .minor-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .minor-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .minor-deco-bullet {
+      color: var(--gold);
+      font-size: 0.75rem;
+    }
+
+    .minor-card h4 {
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: -0.01em;
+    }
+
+    .minor-card:hover h4 {
+      color: var(--gold-light);
+      text-decoration: underline;
+    }
+
+    .minor-desc {
+      color: var(--text-soft);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin-bottom: 1.15rem;
+      flex-grow: 1;
+    }
+
+    .minor-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--card-border);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .minor-tag {
+      font-family: var(--font-mono);
+      background: var(--tag-bg);
+      padding: 0.15rem 0.5rem;
+      border: 1px solid rgba(197, 160, 89, 0.1);
+      border-radius: 2px;
+    }
+
+    .minor-link-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-family: var(--font-deco);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .minor-card:hover .minor-link-text {
+      color: var(--gold);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 2.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      background: var(--bg-alt);
+      position: relative;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-deco);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-links a {
+      font-family: var(--font-deco);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    /* SVG utilities */
+    .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+    }
+
+    .icon-stroke {
+      width: 1.1em;
+      height: 1.1em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: -0.2em;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 2.75rem 0 2rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .bio {
+        font-size: 1rem;
+      }
+
+      .grid-main {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-minor {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-top">
+        <div class="brand-group">
+          <div class="title-row">
+            <h1>Bradley Parker</h1>
+            <span class="deco-pill">
+              <span>&#9670;</span>
+              SAR Tech &amp; Software
+              <span>&#9670;</span>
+            </span>
+          </div>
+
+          <p class="bio">
+            Crafting specialized open-source software, GIS bridges, and operational data pipelines for Ground Search &amp; Rescue (GSAR) teams, spatial workflows, and community technology.
+          </p>
+
+          <div class="social-links">
+            <a class="btn-link" href="https://github.com/Bradley-Parker" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" viewBox="0 0 16 16" width="15" height="15">
+                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+              </svg>
+              GitHub / Bradley-Parker
+            </a>
+            <a class="btn-link" href="https://bradley-parker.github.io/Canadian-SAR-Technology-Hub/" target="_blank" rel="noopener noreferrer">
+              <span>&#9670;</span>
+              Canadian SAR Tech Hub
+            </a>
+          </div>
+        </div>
+
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Color Theme" title="Toggle Light/Dark Theme">
+          <svg id="moon-icon" viewBox="0 0 24 24" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+
+      <!-- TIER 1: FEATURED APPLICATIONS & WEB TOOLS -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-deco-icon">&#9670;</span>
+            <h2 class="section-title">Featured Projects &amp; Web Tools</h2>
+          </div>
+          <p class="section-desc">Client-side applications and collaborative resources engineered for immediate operational deployment.</p>
+        </div>
+
+        <div class="grid-main">
+          
+          <!-- Card 1: SAR-Evac-Tools -->
+          <article class="main-card">
+            <div class="card-top">
+              <span class="card-badge">Web Application</span>
+              <span class="card-symbol" title="CalTopo Bridge">&#9670; &#9671;</span>
+            </div>
+            <h3>
+              <a href="https://github.com/Bradley-Parker/SAR-Evac-Tools" target="_blank" rel="noopener noreferrer">SAR-Evac-Tools</a>
+            </h3>
+            <p class="card-desc">
+              Browser-based tools for Search &amp; Rescue evacuation workflows with CalTopo. Converts structure and residence CSVs into GPX waypoints, and parses CalTopo GeoJSON markers back into spreadsheet status reports. 100% client-side privacy with zero backend upload required.
+            </p>
+            <div class="tag-list">
+              <span class="tag">CalTopo Bridge</span>
+              <span class="tag">GPX / GeoJSON</span>
+              <span class="tag">Evacuation Ops</span>
+              <span class="tag">Client-Side</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn-deco-primary" href="https://bradley-parker.github.io/SAR-Evac-Tools/" target="_blank" rel="noopener noreferrer">
+                Launch Tool
+                <svg class="icon-stroke" viewBox="0 0 24 24" style="width: 13px; height: 13px;">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a class="btn-deco-secondary" href="https://github.com/Bradley-Parker/SAR-Evac-Tools" target="_blank" rel="noopener noreferrer">
+                Source Code
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2: web-id-flow -->
+          <article class="main-card">
+            <div class="card-top">
+              <span class="card-badge">In-Browser AI / Vision</span>
+              <span class="card-symbol" title="Computer Vision">&#9670; &#9671;</span>
+            </div>
+            <h3>
+              <a href="https://github.com/Bradley-Parker/web-id-flow" target="_blank" rel="noopener noreferrer">web-id-flow</a>
+            </h3>
+            <p class="card-desc">
+              Privacy-first credential photo maker operating entirely in the browser. Features guided webcam alignment overlays, local AI background removal, and automatic 4:5 aspect ratio cropping—ready for badge printing without storing personal images on remote servers.
+            </p>
+            <div class="tag-list">
+              <span class="tag">On-Device AI</span>
+              <span class="tag">Background Removal</span>
+              <span class="tag">ID Badging</span>
+              <span class="tag">Zero-Server</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn-deco-primary" href="https://bradley-parker.github.io/web-id-flow/" target="_blank" rel="noopener noreferrer">
+                Launch App
+                <svg class="icon-stroke" viewBox="0 0 24 24" style="width: 13px; height: 13px;">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a class="btn-deco-secondary" href="https://github.com/Bradley-Parker/web-id-flow" target="_blank" rel="noopener noreferrer">
+                Source Code
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3: Canadian-SAR-Technology-Hub -->
+          <article class="main-card">
+            <div class="card-top">
+              <span class="card-badge">Community Knowledge</span>
+              <span class="card-symbol" title="Community Hub">&#9670; &#9671;</span>
+            </div>
+            <h3>
+              <a href="https://github.com/Bradley-Parker/Canadian-SAR-Technology-Hub" target="_blank" rel="noopener noreferrer">Canadian-SAR-Technology-Hub</a>
+            </h3>
+            <p class="card-desc">
+              A community-maintained, open-source repository of Ground Search and Rescue (GSAR) technology, operational templates, procedures, and software recommendations. Designed to share proven, budget-conscious solutions among volunteer SAR units across Canada.
+            </p>
+            <div class="tag-list">
+              <span class="tag">GSAR Standards</span>
+              <span class="tag">Volunteer Tech</span>
+              <span class="tag">Best Practices</span>
+              <span class="tag">Open Knowledge</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn-deco-primary" href="https://bradley-parker.github.io/Canadian-SAR-Technology-Hub/" target="_blank" rel="noopener noreferrer">
+                Visit Hub
+                <svg class="icon-stroke" viewBox="0 0 24 24" style="width: 13px; height: 13px;">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a class="btn-deco-secondary" href="https://github.com/Bradley-Parker/Canadian-SAR-Technology-Hub" target="_blank" rel="noopener noreferrer">
+                Source Code
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ART DECO TRANSITION MOTIF -->
+      <div class="deco-divider">
+        <div class="deco-line"></div>
+        <div class="deco-motif">
+          <span>&#9671;</span>
+          <span>&#9670;</span>
+          <span>&#9671;</span>
+        </div>
+        <div class="deco-line"></div>
+      </div>
+
+      <!-- TIER 2: DEVELOPER LIBRARIES & OPERATIONAL INTEGRATIONS -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-deco-icon">&#9670;</span>
+            <h2 class="section-title">Developer Libraries &amp; Operational Integrations</h2>
+          </div>
+          <p class="section-desc">Specialized API clients, roster synchronization utilities, and real-time operational bridges.</p>
+        </div>
+
+        <div class="grid-minor">
+
+          <!-- Minor 1: sar_d4h_client -->
+          <a class="minor-card" href="https://github.com/Bradley-Parker/sar_d4h_client" target="_blank" rel="noopener noreferrer">
+            <div class="minor-header">
+              <div class="minor-title-wrap">
+                <span class="minor-deco-bullet">&#9670;</span>
+                <h4>sar_d4h_client</h4>
+              </div>
+            </div>
+            <p class="minor-desc">
+              Modular Python 3 client for the D4H Team Manager API (v3). Abstracts authentication context, roster management, attendance endpoints, and team queries for internal SAR automation.
+            </p>
+            <div class="minor-meta">
+              <span class="minor-tag">Python &bull; API Client</span>
+              <span class="minor-link-text">
+                GitHub &#8594;
+              </span>
+            </div>
+          </a>
+
+          <!-- Minor 2: d4h-costing-gen -->
+          <a class="minor-card" href="https://github.com/Bradley-Parker/d4h-costing-gen" target="_blank" rel="noopener noreferrer">
+            <div class="minor-header">
+              <div class="minor-title-wrap">
+                <span class="minor-deco-bullet">&#9670;</span>
+                <h4>d4h-costing-gen</h4>
+              </div>
+            </div>
+            <p class="minor-desc">
+              Operational claim and expense generator for volunteer SAR teams. Ingests D4H incident attendance, computes driving distances via Mapbox Directions API, and compiles reimbursement claim sheets.
+            </p>
+            <div class="minor-meta">
+              <span class="minor-tag">Python &bull; Costing &amp; Claims</span>
+              <span class="minor-link-text">
+                GitHub &#8594;
+              </span>
+            </div>
+          </a>
+
+          <!-- Minor 3: caltopo-d4h-role-sync -->
+          <a class="minor-card" href="https://github.com/Bradley-Parker/caltopo-d4h-role-sync" target="_blank" rel="noopener noreferrer">
+            <div class="minor-header">
+              <div class="minor-title-wrap">
+                <span class="minor-deco-bullet">&#9670;</span>
+                <h4>caltopo-d4h-role-sync</h4>
+              </div>
+            </div>
+            <p class="minor-desc">
+              Audit utility reconciling CalTopo team member accounts against official D4H operational rosters, flagging unverified accounts or credential status discrepancies for team leadership.
+            </p>
+            <div class="minor-meta">
+              <span class="minor-tag">Python &bull; Security &amp; Audit</span>
+              <span class="minor-link-text">
+                GitHub &#8594;
+              </span>
+            </div>
+          </a>
+
+          <!-- Minor 4: caltopo_client -->
+          <a class="minor-card" href="https://github.com/Bradley-Parker/caltopo_client" target="_blank" rel="noopener noreferrer">
+            <div class="minor-header">
+              <div class="minor-title-wrap">
+                <span class="minor-deco-bullet">&#9670;</span>
+                <h4>caltopo_client</h4>
+              </div>
+            </div>
+            <p class="minor-desc">
+              Python API client library for programmatic interaction with CalTopo / SARTopo maps, enabling script-driven layer manipulation, marker updates, and state syncing.
+            </p>
+            <div class="minor-meta">
+              <span class="minor-tag">Python &bull; GIS Client</span>
+              <span class="minor-link-text">
+                GitHub &#8594;
+              </span>
+            </div>
+          </a>
+
+          <!-- Minor 5: zello-to-caltopo-rtt -->
+          <a class="minor-card" href="https://github.com/Bradley-Parker/zello-to-caltopo-rtt" target="_blank" rel="noopener noreferrer">
+            <div class="minor-header">
+              <div class="minor-title-wrap">
+                <span class="minor-deco-bullet">&#9670;</span>
+                <h4>zello-to-caltopo-rtt</h4>
+              </div>
+            </div>
+            <p class="minor-desc">
+              Real-time telemetry bridge parsing live GPS tracking feeds from Zello push-to-talk channels and publishing dynamic trackable objects onto CalTopo tactical maps during field operations.
+            </p>
+            <div class="minor-meta">
+              <span class="minor-tag">Python &bull; Telemetry / RTT</span>
+              <span class="minor-link-text">
+                GitHub &#8594;
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-left">
+        <span>&copy; <span id="current-year"></span> Bradley Parker</span>
+        <span>&bull;</span>
+        <span>Search &amp; Rescue Technology &amp; Tooling</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/Bradley-Parker" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set dynamic current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Theme toggle management (system default + manual override)
+    const toggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+
+    function getPreferredTheme() {
+      const stored = localStorage.getItem('theme');
+      if (stored) return stored;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+
+    function applyTheme(theme) {
+      if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      }
+    }
+
+    let currentTheme = getPreferredTheme();
+    applyTheme(currentTheme);
+
+    toggleBtn.addEventListener('click', () => {
+      currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', currentTheme);
+      applyTheme(currentTheme);
+    });
+
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        currentTheme = e.matches ? 'light' : 'dark';
+        applyTheme(currentTheme);
+      }
+    });
+  </script>
+</body>
+</html>
